@@ -78,7 +78,7 @@ I tested this system in two phases. First, I connected power and verified that t
 
 ## Video
 
-
+https://github.com/user-attachments/assets/be1ef180-5cab-4150-afd1-f3b905b726f9
 
 ## Problems and Headaches
 This project came with a few obstacles. First, acquiring the I2C backpack did not go as smoothly as expected. After I initially ordered two I2C backpacks, my university residence hall lost the package. So, I ordered more to a pickup location, and this went smoothly. When I began de-soldering, I initially tried removing the set of pins from the I2C backpack, but they got stuck at a "halfway out" point in the board. I suspect this was because I de-soldered the pins badly and caused some solder to remain that was too small to be removed with a tool but still substantial enough to keep at least one of the pins attached to the board. De-soldering the LCD after this, however, went very smoothly. Also, I completely fried my first DHT11 sensor by mistakenly wiring it in reverse polarity. Fortunately, I was able to borrow my friend's DHT11 sensor and complete the project.
