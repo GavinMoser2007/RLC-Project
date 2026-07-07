@@ -11,7 +11,7 @@ The behavior and all four damping cases of a series RLC circuit can be explained
 
 $LQ''+RQ'+\frac{1}{C}Q=E(t)$
 
-where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undaped, underdamped, critically damped, or overdamped. The possible homogeneous general solutions solutions (general solutions without the particular solution from E(t) included) are listed below.
+where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undaped, underdamped, critically damped, or overdamped. The possible homogeneous general solutions (general solutions without the particular solution from E(t) included) are listed below.
 
  + Undamped: $Q_h(t)=c_1\cos(\theta t)+c_2\sin(\theta t)$
  + Underdamped: $Q_h(t)=c_1e^{at}\cos(\theta t)+c_2e^{at}\sin(\theta t)$
