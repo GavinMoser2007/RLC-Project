@@ -20,7 +20,7 @@ where L represents inductance in henries, R represents resistance in ohms, C rep
 
 Where a and b are negative.
 
-Because this is a second order differential equation, the general solution will contain two unknown constants. To find these constants and identify a particular solution, there must be initial conditions for charge, Q(t), and current, Q'(t).
+Because this is a second order differential equation, the general solution will contain two unknown constants. To find these constants and identify a particular solution, there must be known initial conditions for charge, Q(t), and current, Q'(t).
 
 ## Circuit Description
 
