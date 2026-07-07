@@ -7,12 +7,17 @@ The goal of this project is to use differential equations and electric circuit c
 A series RLC circuit combines a resistor, R, an inductor, L, and a capacitor, C. Based on the resistance (Ω), capacitance (C), and inductance (L) present, the circuit generally falls into one of four categories: undamped, underdamped, critically damped, and overdamped. Undamped circuits have positive L and C values, but no resistance. This causes infinite oscillation, meaning the circuit never reaches equilibrium. An underdamped circuit has positive values for L, R, and C, but the combination of these values still results in some oscillation, though the amplitude exponentially decays over time due to the resistor, and it eventually reaches equilibrium. A critically damped circuit contains positive values for L, R, and C, and there is no oscillation. Instead, critically damped behavior is characterized by exponential decay towards equilibrium driven by a single exponent. A critically damped circuit reaches equilibrium faster than any other kind of RLC circuit. Finally, an overdamped circuit has positive L, R, and C values and, similar to a critically damped circuit, there is no oscillation. Rather, there is exponential decay. Unlike critically damped circuits, however, exponential behavior is driven by two separate exponents rather than one. This causes an overdamped circuit to take more time to reach equilibrium than a critically damped one. Whether the circuit approaches equilibrium with exponential growth or decay is generally based on the charge on the capacitor, the current on the inductor, and the applied voltage.
 
 ## Differential Equations Aspect
-The behavior and all four damping cases of a series RLC circuit can be explained mathematically using a second order linear nonhomogeneous ordinary differential equation. The RLC equation is $LQ''+RQ'+\frac{1}{C}Q=E(t)$, where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undaped, underdamped, critically damped, or overdamped.
+The behavior and all four damping cases of a series RLC circuit can be explained mathematically using a second order linear nonhomogeneous ordinary differential equation. The RLC equation is:
+
+$LQ''+RQ'+\frac{1}{C}Q=E(t)$
+
+where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undaped, underdamped, critically damped, or overdamped.
 
  + Undamped: $c_1\cos(\theta)+c_2\sin(\theta)$
  + Underdamped: $c_1e^{at}\cos(\theta)+c_2e^{at}\sin(\theta)$
  + Critically Damped: $c_1e^{at}+c_2te^{at}$
  + Overdamped: $c_1e^{at}+c_2e^{bt}$
+
 Where a and b are negative.
 
 Because this is a second order differential equation, the general solution will contain two unknown constants. To find these constants and identify a particular solution, there must be initial conditions for charge, Q(t), and current, Q'(t).
