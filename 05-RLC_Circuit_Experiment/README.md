@@ -28,18 +28,70 @@ The main focus for the circuit setup was to find a way to study the charging beh
 Now, what's interesting about an RLC circuit is the behavior with inductors and capacitors when switches are involved. For inductors, current increases until the component reaches a DC steady state in which it is treated as a short circuit. And so, a short circuit does not have any voltage drop. For capacitors, charge increases, which increases the voltage across the capacitor until it reaches its maximum potential energy to store charge. 
 
 The main equations to support this include:
+
  +
  +
  +
 
-To study the charging relationship of the capacitor, it must start with no charge, or in other words, no voltage difference. As discussed earlier, when an inductor fully charges, it shortens, which means that there is no voltage difference across it. Intuitively thinking about how voltage is equal across parallel branches helped us come up with the idea of having the capacitor be in parallel with the inductor. So, when the switch turns on and charges the inductor fully, there will be a known voltage/charge of 0 across the capacitor, and also a known initial current from the charged inductor. To find the initial current of the inductor, Ohm's law can be used since the inductor is shorted in DC steady state after a while of charging. This results in the current when fully charged being equal to 3.3V divided by the 100 Ohms from the resistor in series with the power supply module. 
+To study the charging relationship of the capacitor, it must start with no charge, or in other words, no voltage difference. As discussed earlier, when an inductor fully charges, it shortens, which means that there is no voltage difference across it. Intuitively thinking about how voltage is equal across parallel branches helped us come up with the idea of having the capacitor be in parallel with the inductor. So, when the switch turns on and charges the inductor fully, there will be a known voltage/charge of 0 across the capacitor, and also a known initial current from the charged inductor. To find the initial current of the inductor, Ohm's law can be used since the inductor is shorted in DC steady state after a while of charging. This results in the current, when fully charged, being equal to 3.3V divided by the 100 Ohms of the resistor plus the 27.6 Ohms of the inductor's DC resistance, all of which are in series with the power supply module. 
 
 Once the switch opens, the capacitor begins to charge up from the initial current of the charged inductor as $I_L(0^+) = $I_L(0^-) and also $V_C(0^+) = $V_C(0^-).
+
+The main goal of the circuit design was to find a way to study the charging behavior of a capacitor. To solve for the capacitor's charging equation, two initial conditions are required: the capacitor's initial voltage (or equivalently, its initial charge) and the initial current supplied by the inductor.
+
+One of the interesting characteristics of an RLC circuit is the interaction between inductors and capacitors when switches are used. As current flows through an inductor, it gradually increases until the circuit reaches DC steady state. At this point, the inductor behaves like a short circuit, meaning the voltage across it is approximately zero while current continues to flow through its winding resistance. In contrast, a capacitor accumulates charge over time, causing the voltage across it to increase until it reaches its maximum value in DC steady state. At that point, the capacitor behaves like an open circuit and no steady-state current flows through it.
+
+The main equations that describe this behavior are:
+
+* Inductor voltage-current relationship:
+  [
+  v_L = L\frac{di_L}{dt}
+  ]
+
+* Capacitor current-voltage relationship:
+  [
+  i_C = C\frac{dv_C}{dt}
+  ]
+
+* Ohm's Law:
+  [
+  V = IR
+  ]
+
+To study the capacitor's charging behavior, it must begin with zero stored charge, or equivalently, zero voltage across its terminals. Since a fully energized inductor has approximately zero voltage across it in DC steady state, placing the capacitor in parallel with the inductor guarantees that the capacitor also has zero initial voltage. This observation follows from the fact that elements connected in parallel share the same voltage.
+
+The circuit was therefore designed so that the switch first connects the inductor to the power supply and allows it to reach DC steady state. During this time, the capacitor remains in parallel with the inductor, giving the known initial condition
+
+[
+V_C(0^-) = 0.
+]
+
+The second initial condition is the inductor current immediately before switching. Because the inductor behaves as a short circuit in DC steady state, the steady-state current can be found using Ohm's Law. The current is determined by the supply voltage divided by the total series resistance, which consists of the 100 (\Omega) resistor and the inductor's 27.6 (\Omega) DC winding resistance:
+
+[
+I_L(0^-) = \frac{3.3\text{ V}}{100\ \Omega + 27.6\ \Omega}
+\approx 25.9\text{ mA}.
+]
+
+When the switch changes position, the power supply is disconnected and the inductor begins transferring its stored magnetic energy to the capacitor. Because the current through an inductor and the voltage across a capacitor cannot change instantaneously, the initial conditions immediately after switching are
+
+[
+I_L(0^+) = I_L(0^-)
+]
+
+and
+
+[
+V_C(0^+) = V_C(0^-).
+]
+
+These continuity conditions provide the known initial values needed to solve the differential equation describing the capacitor's charging behavior.
+
 ## Hardware and Safety
 
 ## Circuit Diagram
 
-<img width="594" height="397" alt="Screenshot 2026-07-06 223931" src="https://github.com/user-attachments/assets/6ef359b4-fe7d-4473-9e04-1a148a027b06" />
+<img width="512" height="327" alt="Screenshot 2026-07-07 212614" src="https://github.com/user-attachments/assets/0c8a21ec-43bb-4f77-8b5f-205440e85862" />
 
 ## Predicted Equation
 
