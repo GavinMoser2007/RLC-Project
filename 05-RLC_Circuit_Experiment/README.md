@@ -39,7 +39,7 @@ v(t) = L\frac{di(t)}{dt}
 i(t) = C\frac{dv(t)}{dt}
 \]
 
-*DC Steady State Capacitor Charge:
+* DC Steady State Capacitor Charge:
   \[
 Q = CV
 \]
