@@ -6,22 +6,6 @@ The goal of this project is to use differential equations and electric circuit c
 ## RLC Circuit Background
 A series RLC circuit combines a resistor, R, an inductor, L, and a capacitor, C. Based on the resistance (Ω), capacitance (C), and inductance (L) present, the circuit generally falls into one of four categories: undamped, underdamped, critically damped, and overdamped. Undamped circuits have positive L and C values, but no resistance. This causes infinite oscillation, meaning the circuit never reaches equilibrium. An underdamped circuit has positive values for L, R, and C, but the combination of these values still results in some oscillation, though the amplitude exponentially decays over time due to the resistor, and it eventually reaches equilibrium. A critically damped circuit contains positive values for L, R, and C, and there is no oscillation. Instead, critically damped behavior is characterized by exponential decay towards equilibrium driven by a single exponent. A critically damped circuit reaches equilibrium faster than any other kind of RLC circuit. Finally, an overdamped circuit has positive L, R, and C values and, similar to a critically damped circuit, there is no oscillation. Rather, there is exponential decay. Unlike critically damped circuits, however, exponential behavior is driven by two separate exponents rather than one. This causes an overdamped circuit to take more time to reach equilibrium than a critically damped one. Whether the circuit approaches equilibrium with exponential growth or decay is generally based on the charge on the capacitor, the current on the inductor, and the applied voltage.
 
-## Differential Equations Aspect
-The behavior and all four damping cases of a series RLC circuit can be explained mathematically using a second order linear nonhomogeneous ordinary differential equation. The RLC equation is:
-
-$LQ''+RQ'+\frac{1}{C}Q=E(t)$
-
-where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undaped, underdamped, critically damped, or overdamped. The possible homogeneous general solutions (general solutions without the particular solution from E(t) included) are listed below.
-
- + Undamped: $Q_h(t)=c_1\cos(\theta t)+c_2\sin(\theta t)$
- + Underdamped: $Q_h(t)=c_1e^{at}\cos(\theta t)+c_2e^{at}\sin(\theta t)$
- + Critically Damped: $Q_h(t)=c_1e^{at}+c_2te^{at}$
- + Overdamped: $Q_h(t)=c_1e^{at}+c_2e^{bt}$
-
-Where a and b are negative.
-
-Because this is a second order differential equation, the general solution will contain two unknown constants. To find these constants and identify a particular solution, there must be known initial conditions for charge, Q(t), and current, Q'(t).
-
 ## Circuit Description
 
 ### Physical Layout
@@ -29,7 +13,7 @@ This circuit was designed so that the capacitor can discharge in a closed RLC ci
 
 ![alt_text](Circuit.jpg)
 
-### Key Concepts and Initial Conditions
+### Functionality and Initial Conditions
 The main goal of the circuit design was to find an equation for the charging and discharging behavior of the capacitor. To solve for the capacitor's charging equation, two initial conditions are required: the capacitor's initial voltage (or its initial charge) and the initial current passing through the inductor. While it was easy to find that the initial charge on the capacitor at time t=0 is zero, determining the initial current on the inductor requires more math and analysis of the circuit configuration. Fortunately, it can be found using circuit rules and physics.
 
 One of the interesting characteristics of an RLC circuit is the interaction between inductors and capacitors when switches are used. As current flows through an inductor, it gradually increases until the circuit reaches DC steady state. At this point, the inductor behaves like a short circuit, meaning the voltage across it is approximately zero while current continues to flow through its winding resistance. In contrast, a capacitor accumulates charge over time, causing the voltage across it to increase until it reaches its maximum value in DC steady state. At that point, the capacitor behaves like an open circuit and no steady-state current flows through it.
@@ -45,10 +29,10 @@ The main equations that describe this behavior are:
 * DC Steady State Capacitor Charge:
   $Q=CV$
 
-To study the capacitor's charging behavior, it must begin with zero stored charge, or equivalently, zero voltage across its terminals. Since a fully energized inductor has approximately zero voltage across it when shorted in DC steady state, placing the capacitor in parallel with the inductor guarantees that the capacitor also has zero initial voltage because elements connected in parallel share the same voltage.
+### [Note to gavin: this is desciribing discharging, right? Please include. Could you explain the physics behind the entire loop of both charging and discharging phases like you did with discharging? This is very close to a "How Does it Work section" so this could get that out of the way for us]
+To study the capacitor's charging behavior, it must begin with zero stored charge, or equivalently, zero voltage across its terminals. Since a fully energized inductor has approximately zero voltage across it when shorted in DC steady state, placing the capacitor in parallel with the inductor guarantees that the capacitor also has zero initial voltage because elements connected in parallel share the same voltage. The circuit was therefore designed so that the switch connects the inductor to the power supply and allows it to reach DC steady state, which it does very quickly. During this time, the capacitor remains in parallel with the inductor, giving the known initial condition of $V_C(0^-)=0\,\mathrm{V}$
 
-The circuit was therefore designed so that the switch connects the inductor to the power supply and allows it to reach DC steady state, which it does very quickly. During this time, the capacitor remains in parallel with the inductor, giving the known initial condition of $V_C(0^-)=0\,\mathrm{V}$
-
+### [Discharging?]
 The second initial condition is the inductor current immediately before switching. Because the inductor behaves as a short circuit in DC steady state, the steady-state current can be found using Ohm's Law. The current is determined by the supply voltage divided by the total series resistance, which consists of the 100 $\Omega$ resistor and the inductor's 27.6 $\Omega$ DC winding resistance:
 $I_L(0^-)=\frac{3.3\,\mathrm{V}}{100\,\Omega+27.6\,\Omega}\approx25.9\,\mathrm{mA}$
 
@@ -57,11 +41,47 @@ $I_L(0^+)=I_L(0^-)$
 and
 $V_C(0^+)=V_C(0^-)$
 
-These conditions provide the known initial values needed to solve the differential equation describing the capacitor's charging behavior.
+### Note to gavin: I changed "charging behavior" to "discharging behavior". If that's correct, just delete this and disregard please
+These conditions provide the known initial values needed to solve the differential equation describing the capacitor's discharging behavior.
 
 ## Circuit Diagram
 
 <img width="512" height="327" alt="Screenshot 2026-07-07 212614" src="https://github.com/user-attachments/assets/0c8a21ec-43bb-4f77-8b5f-205440e85862" />
+
+## Predicting Behavior with Differential Equations
+The behavior of a series RLC circuit can be explained mathematically using a second order linear nonhomogeneous ordinary differential equation. The standard RLC equation is:
+
+$LQ''+RQ'+\frac{1}{C}Q=E(t)$
+
+where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undaped, underdamped, critically damped, or overdamped. The possible homogeneous general solutions (general solutions without the particular solution from E(t) included) are listed below.
+
+ + Undamped: $Q_h(t)=c_1\cos(\theta t)+c_2\sin(\theta t)$
+ + Underdamped: $Q_h(t)=c_1e^{at}\cos(\theta t)+c_2e^{at}\sin(\theta t)$
+ + Critically Damped: $Q_h(t)=c_1e^{at}+c_2te^{at}$
+ + Overdamped: $Q_h(t)=c_1e^{at}+c_2e^{bt}$
+
+Where a and b are negative.
+
+Because this is a second order differential equation, the general solution will contain two unknown constants. To find these constants and identify a particular solution, there must be known initial conditions for charge, Q(t), and current, Q'(t).
+
+### Charging Phase
+During the charging phase, when the switch is closed, the circuit is not a true series RLC circuit. So, the standard RLC equation alone is not sufficient to find an expression for the charge on the capacitor. Instead, the charge on the capacitor must be found with a system of first-order linear ordinary differential equations because it is dependent on the current through the inductor parallel to it. This system is constructed with circuit loop analysis. Following the physical layout of the circuit, the smaller loop is called loop A and includes the power source, the pushbutton, the inductor, and the 100Ω resistor. Also, the inductor has 27.6Ω of resistance which must be included in the equation. Loop A's equation looks like this:
+
+$3.3-L\(frac{di_L(t)}{dt})-(R_i\i_L)-100\(i_L+(frac{dQ(t)}{dt}))$
+
+This equation can then be solved for $(frac{di_L(t)}{dt})$, the derivative of the current through the inductor as a function of time.
+
+$(frac{di_L(t)}{dt})=-12760\i_L-10000\(frac{dQ(t)}{dt})+330$
+
+Next, loop B consists of the power source, the pushbutton, the 10Ω resistor, the 5000uF capacitor, and the 100Ω resistor. This is the equation for loop B:
+
+$3.3-10\(frac{dQ(t)}{dt})-200\Q-100\(i_L+(frac{dQ(t)}{dt}))$
+
+This equation is then solved for the current through the capacitor, which is equivalent to the derivative of the charge on the capacitor, $(frac{dQ(t)}{dt})$.
+
+$(frac{dQ(t)}{dt})=(frac{-100}{110})\i_L-(frac{200}{110})\Q+0.03$
+
+This equation can then be plugged into the equation for $(frac{di_L(t)}{dt})$ to make it an equation in terms of only $i_L$ and $Q$.
 
 ## Hardware and Safety
 
