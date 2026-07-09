@@ -76,7 +76,7 @@ $3.3 - L\frac{di_L(t)}{dt} - R_L i_L(t) - 100\left(i_L(t) + \frac{dQ(t)}{dt}\rig
 
 This equation can then be solved for $\frac{di_L(t)}{dt}$, the derivative of the current through the inductor as a function of time.
 
-$\frac{di_L(t)}{dt} = -12760,i_L(t) - 10000,\frac{dQ(t)}{dt} + 330$
+$\frac{di_L(t)}{dt} = -12760 i_L(t) - 10000\frac{dQ(t)}{dt} + 330$
 
 Next, Loop B consists of the power source, the pushbutton, the $10,\Omega$ resistor, the $5000,\mu\text{F}$ capacitor, and the $100,\Omega$ resistor. This is the equation for Loop B:
 
