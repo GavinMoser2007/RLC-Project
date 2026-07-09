@@ -65,8 +65,8 @@ These conditions provide the known initial values needed to solve the differenti
 <img width="659" height="356" alt="Screenshot 2026-07-08 235401" src="https://github.com/user-attachments/assets/6d6affd7-02c5-4f6e-ae36-3e8197a5cdea" />
 
 ## Test Results
-<img width="320" height="240" alt="ChargeOverCapacitor" src="https://github.com/user-attachments/assets/7203237c-90e5-450a-a9bd-162c13381faf" />
-<img width="320" height="240" alt="Voltage_Across_Capacitor" src="https://github.com/user-attachments/assets/4634bdd8-0d01-4ea3-8873-8d499dc5136f" />
+<img width="384" height="288" alt="ChargeOverCapacitor" src="https://github.com/user-attachments/assets/7203237c-90e5-450a-a9bd-162c13381faf" />
+<img width="384" height="288" alt="Voltage_Across_Capacitor" src="https://github.com/user-attachments/assets/4634bdd8-0d01-4ea3-8873-8d499dc5136f" />
 
 ## Hardware and Safety
 
