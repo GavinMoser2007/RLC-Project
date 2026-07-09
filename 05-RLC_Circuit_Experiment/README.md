@@ -23,7 +23,10 @@ Where a and b are negative.
 Because this is a second order differential equation, the general solution will contain two unknown constants. To find these constants and identify a particular solution, there must be known initial conditions for charge, Q(t), and current, Q'(t).
 
 ## Circuit Description
-The main goal of the circuit design was to find a way to study the charging behavior of a capacitor. To solve for the capacitor's charging equation, two initial conditions are required: the capacitor's initial voltage (or equivalently, its initial charge) and the initial current supplied by the inductor.
+This cicuit features two loops. The smaller loop includes the emf source, a pushbutton to act as a switch, an inductor, and a 100Ω resistor all in series. The larger loop includes the same emf source, the pushbutton, a 10Ω resistor, and a parallel configuration of five 1000uF electrolytic capacitors with an equivalent capacitance of 5000uF. Like the small loop, everything included in the large loop is in series.
+
+## Circuits Solution
+This circuit was designed so that the charge on the capacitor could be accurately observed over time. Furthermore, the experimental procedure used involved charging the capacitor and discharging it. To solve for the capacitor's charging equation with circuits-related methods, two initial conditions are required: the capacitor's initial voltage, which can be used to find initial charge, and the initial current supplied by the inductor.
 
 One of the interesting characteristics of an RLC circuit is the interaction between inductors and capacitors when switches are used. As current flows through an inductor, it gradually increases until the circuit reaches DC steady state. At this point, the inductor behaves like a short circuit, meaning the voltage across it is approximately zero while current continues to flow through its winding resistance. In contrast, a capacitor accumulates charge over time, causing the voltage across it to increase until it reaches its maximum value in DC steady state. At that point, the capacitor behaves like an open circuit and no steady-state current flows through it.
 
