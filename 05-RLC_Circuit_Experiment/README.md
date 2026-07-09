@@ -50,6 +50,11 @@ These conditions provide the known initial values needed to solve the differenti
 <img width="659" height="356" alt="Screenshot 2026-07-08 235401" src="https://github.com/user-attachments/assets/6d6affd7-02c5-4f6e-ae36-3e8197a5cdea" />
 
 ## Hardware and Safety
+There were numerous hardware and safety concerns that appeared during this project, and the largest, most prominent problem was that of negative voltage. Undamped and underdamped RLC configurations can cause voltage to oscillate and dip below zero. Negative voltage must be avoided or, alternatively, approached with the proper protective measures such as diodes and voltage dividers because it can damage the polarized electrolytic capacitors in the circuit as well as the analog input pins of the microcontroller. So, while we planned this project, we chose a combination of R, L, and C that would ensure no oscillatory behavior, preventing the circuit from being undamped or underdamped.
+
+Also, we chose to connect the circuit to the arduino with a 10k $\Omega$ resistor to safeguard against possible current spikes if anything unexpected were to happen, which could damage the analog in pin. 
+
+Another concern that had to be considered was the sampling rate of the microcontroller. At its quickest, the arduino's analog in pins can only sample data at a rate of around one sample per hundred microseconds. So, this circuit was engineered so that its capacitor did not charge or discharge too quickly to be measured accurately.
 
 ## Testing Procedure and Results
 During testing, the circuit was connected to the power source and the pushbutton was held down for three seconds before being released. Voltage and charge data was collected during the whole process, and the graphs are included below.
