@@ -49,9 +49,15 @@ These conditions provide the known initial values needed to solve the differenti
 
 <img width="659" height="356" alt="Screenshot 2026-07-08 235401" src="https://github.com/user-attachments/assets/6d6affd7-02c5-4f6e-ae36-3e8197a5cdea" />
 
-## Test Results
+## Hardware and Safety
+
+## Testing Procedure and Results
+During testing, the circuit was connected to the power source and the pushbutton was held down for three seconds before being released. Voltage and charge data was collected during the whole process, and the graphs are included below.
+
 <img width="384" height="288" alt="ChargeOverCapacitor" src="https://github.com/user-attachments/assets/7203237c-90e5-450a-a9bd-162c13381faf" />
 <img width="384" height="288" alt="Voltage_Across_Capacitor" src="https://github.com/user-attachments/assets/4634bdd8-0d01-4ea3-8873-8d499dc5136f" />
+
+The graphs illustrate that the capacitor reached its peak charge of roughly 0.004 coulombs and peak voltage of roughly 0.8 volts after around 2.5 seconds of charging. Then, it took nearly one second to fully discharge after the switch was opened. Both curves, that of the charging phase and the discharging phase, appear to be exponential.
 
 ## Predicting Behavior with Differential Equations
 The behavior of a series RLC circuit can be explained mathematically using a second order linear nonhomogeneous ordinary differential equation. The standard RLC equation is:
@@ -88,12 +94,6 @@ $\frac{dQ(t)}{dt} = -\frac{100}{110}i_L(t) - \frac{200}{110}Q(t) + 0.03$
 
 This equation can then be plugged into the equation for $\frac{di_L(t)}{dt}$ to make it an equation in terms of only $i_L(t)$ and $Q(t)$.
 
+## Conclusions
 
-## Hardware and Safety
-
-## Predicted Equation
-
-## Circuit Development
-
-
-## 
+## What Did I learn? (Cam)
