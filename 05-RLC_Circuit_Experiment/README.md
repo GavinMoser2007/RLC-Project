@@ -72,7 +72,7 @@ Because this is a second order differential equation, the general solution will 
 ### Charging Phase
 During the charging phase, when the switch is closed, the circuit is not a true series RLC circuit. So, the standard RLC equation alone is not sufficient to find an expression for the charge on the capacitor. Instead, the charge on the capacitor must be found with a system of first-order linear ordinary differential equations because it is dependent on the current through the inductor parallel to it. This system is constructed with circuit loop analysis. Following the physical layout of the circuit, the smaller loop is called Loop A and includes the power source, the pushbutton, the inductor, and the $100,\Omega$ resistor. Also, the inductor has $27.6,\Omega$ of resistance which must be included in the equation. Loop A's equation looks like this:
 
-$3.3 - L\frac{di_L(t)}{dt} - R_i i_L(t) - 100\left(i_L(t) + \frac{dQ(t)}{dt}\right) = 0$
+$3.3 - L\frac{di_L(t)}{dt} - R_L i_L(t) - 100\left(i_L(t) + \frac{dQ(t)}{dt}\right) = 0$
 
 This equation can then be solved for $\frac{di_L(t)}{dt}$, the derivative of the current through the inductor as a function of time.
 
