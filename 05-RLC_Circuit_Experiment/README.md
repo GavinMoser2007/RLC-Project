@@ -82,7 +82,7 @@ The behavior of a series RLC circuit can be explained mathematically using a sec
 
 $LQ''+RQ'+\frac{1}{C}Q=E(t)$
 
-where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undaped, underdamped, critically damped, or overdamped. The possible homogeneous general solutions (general solutions without the particular solution from E(t) included) are listed below.
+where L represents inductance in henries, R represents resistance in ohms, C represents capacitance in farads, Q represents charge in coulombs, and E(t) represents applied voltage in volts as a function of time. Furthermore, the form of the general solution indicates whether the circuit is undamped, underdamped, critically damped, or overdamped. The possible homogeneous general solutions (general solutions without the particular solution from E(t) included) are listed below.
 
  + Undamped: $Q_h(t)=c_1\cos(\theta t)+c_2\sin(\theta t)$
  + Underdamped: $Q_h(t)=c_1e^{at}\cos(\theta t)+c_2e^{at}\sin(\theta t)$
@@ -94,7 +94,7 @@ Where a and b are negative.
 Because this is a second order differential equation, the general solution will contain two unknown constants. To find these constants and identify a particular solution, there must be known initial conditions for charge, Q(t), and current, Q'(t).
 
 ### Charging Phase
-During the charging phase, when the switch is closed, the circuit is not a true series RLC circuit. So, the standard RLC equation alone is not sufficient to find an expression for the charge on the capacitor. Instead, the charge on the capacitor must be found with a system of first-order linear ordinary differential equations because it is dependent on the current through the inductor parallel to it. This system is constructed with circuit loop analysis. Following the physical layout of the circuit, the smaller loop is called Loop A and includes the power source, the pushbutton, the inductor, and the $100,\Omega$ resistor. Also, the inductor has $27.6,\Omega$ of resistance which must be included in the equation. Loop A's equation looks like this:
+During the charging phase, when the switch is closed, the circuit is not a true series RLC circuit. So, the standard RLC equation alone is not sufficient to find an expression for the charge on the capacitor. Instead, the charge on the capacitor must be found with a system of first-order linear ordinary differential equations because its derivative is dependent on the current through the inductor parallel to it. This system is constructed with circuit loop analysis. Following the physical layout of the circuit, the smaller loop is called Loop A and includes the power source, the pushbutton, the inductor, and the $100,\Omega$ resistor. Also, the inductor has $27.6,\Omega$ of resistance which must be included in the equation. Loop A's equation looks like this:
 
 $3.3 - L\frac{di_L(t)}{dt} - R_L i_L(t) - 100\left(i_L(t) + \frac{dQ(t)}{dt}\right) = 0$
 
@@ -110,7 +110,42 @@ This equation is then solved for the current through the capacitor, which is equ
 
 $\frac{dQ(t)}{dt} = -\frac{100}{110}i_L(t) - \frac{200}{110}Q(t) + 0.03$
 
-This equation can then be plugged into the equation for $\frac{di_L(t)}{dt}$ to make it an equation in terms of only $i_L(t)$ and $Q(t)$.
+This equation can then be plugged into the equation for $\frac{di_L(t)}{dt}$ to make it an equation in terms of only $i_L(t)$ and $Q(t)$. With $\frac{dQ(t)}{dt}$ plugged in, the equation looks like this:
+
+$\frac{di_L(t)}{dt} = -3669 i_L(t) + 18182Q(t) +30$
+
+These two first order linear ordinary differential equations each have the same two dependent variables, so they form a system. Though the exact tactics for solving this system for Q(t) are beyond the scope of this report, its general form is:
+
+$Q(t) = 19.4c_1\,\mathrm{e}^{-6.5t} + c_2\,\mathrm{e}^{-3664.5t} + 0.00355$
+
+This equation represents an overdamped circuit. However, out of the two initial conditions, only one represents charge, but this equation has two unknown constants. Fortunately, the equation for current on the inductor has the same unknown constants, so they can be found using a system of the two equations. The general solution for current on the inductor as a function of time is:
+
+$i_L(t) = 100c_1\,\mathrm{e}^{-6.5t} + 4040c_2\,\mathrm{e}^{-3664.5t} + 0.0264$
+
+With the initial conditions, $Q(0)=0$ and $i_L(0)=0$ applied and the resulting system solved for $c_1$ and $c_2$, the equation for charge on the capacitor during charging looks like this:
+
+$Q(t) = -0.00355\,\mathrm{e}^{-6.5t} + 0.00355$
+
+Surprisingly, the general form for this equation matches that of an overdamped circuit, but the particular form now matches none of the four possible cases. This is initially surprising, but it makes sense after considering the exponential terms in the general form. One term has e raised to the power of -6.5 multiplied by t, while the other exponential term uses -3664.5 instead. So, the second term exponentially decays insanely faster than the first one, and this happens so quickly that its influence is negligible in the solved form of the equation. And, $c_2$ becomes negligible, incredibly close to zero. So, the equation behaves as an RC circuit despite the inductor's being parallel to the capacitor. From a circuits perspective, the inductor has a negligible effect on the form of the capacitor's charging equation. Though unexpected, this equation makes perfect sense.
+
+### Discharging phase
+Unlike the charging phase where the capacitor charges in parallel to the inductor, the discharging phase features a full series RLC circuit because the switch is open. It can be modeled with the standard RLC equation:
+
+$0.01Q''+37.6Q'+200Q=0$
+
+The general form of the equation solved for Q(t) is:
+
+$Q(t) = c_1\,\mathrm{e}^{-5.5t} + c_2\,\mathrm{e}^{-3754.5t}$
+
+Because the two curves for charging and discharging form a continuous curve and the discharging process begins at the known time t=3 when the switch is opened, we can use $Q(3)$ and $Q'(3)$ as initial conditions for discharging. Those conditions are:
+
+$Q(3)=0.00355$, $Q'(3)=0$
+
+The solved form of the capacitor's discharging is:
+
+$Q(t) = 0.00355\,\mathrm{e}^{-5.5t}$
+
+In this equation, time t represents the time elapsed since discharging began, not the time elapsed since charging began. Again, the influence of the inductor is negligible on the form of this equation, so it resembles that of an RC circuit. Interestingly, though, the number in the exponent has changed from -6.5 to -5.5. This is likely due to the inductor's influence and the fact that the current now flows in a single loop rather than two loops in the charging phase.
 
 ## Conclusions
 
