@@ -72,14 +72,6 @@ Also, we chose to connect the circuit to the arduino with a 10k $\Omega$ resisto
 
 Another concern that had to be considered was the sampling rate of the microcontroller. At its quickest, the arduino's analog in pins can only sample data at a rate of around one sample per hundred microseconds. So, this circuit was engineered so that its capacitor did not charge or discharge too quickly to be measured accurately.
 
-## Testing Procedure and Results
-During testing, the circuit was connected to the power source and the pushbutton was held down for three seconds before being released. Voltage and charge data was collected during the whole process, and the graphs are included below.
-
-<img width="384" height="288" alt="ChargeOverCapacitor" src="https://github.com/user-attachments/assets/7203237c-90e5-450a-a9bd-162c13381faf" />
-<img width="384" height="288" alt="Voltage_Across_Capacitor" src="https://github.com/user-attachments/assets/4634bdd8-0d01-4ea3-8873-8d499dc5136f" />
-
-The graphs illustrate that the capacitor reached its peak charge of roughly 0.004 coulombs and peak voltage of roughly 0.8 volts after around 2.5 seconds of charging. Then, it took nearly one second to fully discharge after the switch was opened. Both curves, that of the charging phase and the discharging phase, appear to be exponential.
-
 ## Predicting Behavior with Differential Equations
 The behavior of a series RLC circuit can be explained mathematically using a second order linear nonhomogeneous ordinary differential equation. The standard RLC equation is:
 
@@ -149,6 +141,14 @@ The solved form of the capacitor's discharging is:
 $Q(t) = 0.00355\mathrm{e}^{-5.5t}$
 
 In this equation, time t represents the time elapsed since discharging began, not the time elapsed since charging began. Again, the influence of the inductor is negligible on the form of this equation, so it resembles that of an RC circuit. Interestingly, though, the number in the exponent has changed from -6.5 to -5.5. This is likely due to the inductor's influence and the fact that the current now flows in a single loop rather than two loops in the charging phase.
+
+## Testing Procedure and Results
+During testing, the circuit was connected to the power source and the pushbutton was held down for three seconds before being released. Voltage and charge data was collected during the whole process, and the graphs are included below.
+
+<img width="384" height="288" alt="ChargeOverCapacitor" src="https://github.com/user-attachments/assets/7203237c-90e5-450a-a9bd-162c13381faf" />
+<img width="384" height="288" alt="Voltage_Across_Capacitor" src="https://github.com/user-attachments/assets/4634bdd8-0d01-4ea3-8873-8d499dc5136f" />
+
+The graphs illustrate that the capacitor reached its peak charge of roughly 0.004 coulombs and peak voltage of roughly 0.8 volts after around 2.5 seconds of charging. Then, it took nearly one second to fully discharge after the switch was opened. Both curves, that of the charging phase and the discharging phase, appear to be exponential.
 
 ## Conclusions
 
