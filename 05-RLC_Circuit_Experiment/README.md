@@ -31,6 +31,7 @@ The main equations that describe this behavior are:
 
 ## Discharging:
 To study the capacitor's discharging behavior, it must begin with the maximum stored charge, or voltage across its terminals. Since a fully energized inductor will be shorted in DC steady state except for some realistic resistance within the winding copper wire, placing the capacitor in parallel with the inductor guarantees that the capacitor will stop charging when the inductor reaches this moment. The circuit was therefore designed for both energy sources to be connected by a common node for both of them to reach their DC steady state. When these components are connected in parallel, we have found that they generally approach their DC steady state at around the same time of >5 $\tau$. However, what's great about the capacitor is that it stores charge for later use when disconnected, as the dielectric acts as an insulator, so it maintains a constant voltage. Once the inductor is shorted, a voltage divider equation can be used to find the voltage of the partially charged capacitor using the 100$\Omega$ resistor and the resistance of the winding copper wire. 
+
 $$
 V_{27.6}=3.3\cdot\frac{27.6}{100+27.6}=3.3\cdot\frac{27.6}{127.6}
 $$
