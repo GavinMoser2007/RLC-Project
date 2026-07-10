@@ -13,6 +13,8 @@ This circuit was designed so that the capacitor can discharge in a closed RLC ci
 
 ![alt_text](Circuit.jpg)
 
+*This diagram has the ground wire of the Arduino UNO microcontroller connected to the ground of the power supply. This was NOT how we measured the voltage over the capacitor. This picture just had this slight mistake. Since the ground is a reference for voltage differences, having it placed right after the capacitor is needed to measure the voltage drop/gain from the capacitor.*
+
 ### Functionality and Initial Conditions
 The main goal of the circuit design was to find an equation for the charging and discharging behavior of the capacitor. To solve for the capacitor's charging equation, two initial conditions are required: the capacitor's initial voltage (or its initial charge) and the initial current passing through the inductor. While it was easy to find that the initial charge on the capacitor at time t=0 is zero, determining the initial current on the inductor requires more math and analysis of the circuit configuration. Fortunately, it can be found using circuit rules and physics.
 
